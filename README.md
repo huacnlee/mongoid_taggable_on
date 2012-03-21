@@ -2,6 +2,10 @@
 
 Mongoid Taggable provides some helpers to create taggable documents, can use many fields.
 
+## Status
+
+[![CI Status](https://secure.travis-ci.org/huacnlee/mongoid_taggable_on.png)](http://travis-ci.org/huacnlee/mongoid_taggable_on)
+
 ## Installation
 
 You can simple install from rubygems:
