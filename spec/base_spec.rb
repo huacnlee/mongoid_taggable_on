@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe "Mongoid::TaggableOn" do
-  after do
+  after(:all) do
     Movie.delete_all
   end
   
@@ -34,5 +34,40 @@ describe "Mongoid::TaggableOn" do
     m = Movie.new
     m.actor_list = "成龙，李连杰，甄子丹"
     m.actors.should == ["成龙","李连杰","甄子丹"]
+  end
+  
+  describe "tagged_with_on can work with all match" do
+    before(:all) do
+      Movie.create(:category_list => "Ruby,Rails,Python", :country_list => "China,Mexico")
+      Movie.create(:category_list => "Java,Rails,Python", :country_list => "China,United States")
+      Movie.create(:category_list => "Django,Rails,Go")
+      Movie.create(:category_list => "C,Elang,PHP,Java")
+    end
+    
+    it "match with all in" do
+      Movie.tagged_with_on(:categories, ["Rails","Python"]).count.should == 2
+    end
+    
+    it "match with any in" do
+      Movie.tagged_with_on(:categories, ["Rails","Python"], :match => :any).count.should == 3
+    end
+    
+    it "match with not in" do
+      Movie.tagged_with_on(:categories, ["Rails","Python"], :match => :not).count.should == 2
+    end
+    
+    it "match with string value" do
+      Movie.tagged_with_on(:categories, "Java,Rails").count.should == 1
+    end
+    
+    it "match with case insensitive" do
+      Movie.tagged_with_on(:categories, "jAva,RAILS").count.should == 1
+      Movie.tagged_with_on(:categories, "php").count.should == 1
+    end
+    
+    it "match different taggable" do
+      Movie.tagged_with_on(:categories, ["Rails","Python"]).tagged_with_on(:countries,"United States").count.should == 1
+      Movie.tagged_with_on(:categories, ["Rails","Python"]).tagged_with_on(:countries,"China").count.should == 2
+    end
   end
 end

@@ -25,6 +25,7 @@ class Movie
   taggable_on :actors, :index => false
   taggable_on :directors
   taggable_on :countries
+  taggable_on :categories
   
   field :title
   field :summary
