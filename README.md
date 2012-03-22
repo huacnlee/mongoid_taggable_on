@@ -44,8 +44,8 @@ find with tag:
 
     irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt")
     irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt", :match => :any)
-    irb> Movie.tagged_with_on(:actors, "Nicolas Cage", :match => :not)
-    
+    irb> Movie.tagged_with_on(:actors, "Nicolas Cage", :match => :not)    
+
 ## Allow split chars
 
     , ，| /
