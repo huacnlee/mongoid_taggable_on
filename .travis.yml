@@ -1,4 +1,4 @@
 rvm: 1.9.2
 before_script: 
-  - "cp spec/mongoid.yml.forci spec/mongoid.yml"
+  - mongo mongoid_taggable_on_test --eval 'db.addUser("travis", "test");'
 
