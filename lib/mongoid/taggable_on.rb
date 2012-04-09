@@ -26,7 +26,7 @@ find items with tag
         opts[:match] ||= ""
         field_name = field_name.to_s.tableize
         tags = split_tag(tags) if tags.is_a?(String)
-        tags = tags.collect { |t| /#{t}/i }
+        tags = tags.collect { |t| t.to_s }
         case opts[:match].to_sym
         when :any then
           any_in(:"#{field_name}" => tags)

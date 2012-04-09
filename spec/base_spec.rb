@@ -60,10 +60,10 @@ describe "Mongoid::TaggableOn" do
       Movie.tagged_with_on(:categories, "Java,Rails").count.should == 1
     end
     
-    it "match with case insensitive" do
-      Movie.tagged_with_on(:categories, "jAva,RAILS").count.should == 1
-      Movie.tagged_with_on(:categories, "php").count.should == 1
-    end
+    # it "match with case insensitive" do
+    #   Movie.tagged_with_on(:categories, "jAva,RAILS").count.should == 1
+    #   Movie.tagged_with_on(:categories, "php").count.should == 1
+    # end
     
     it "match different taggable" do
       Movie.tagged_with_on(:categories, ["Rails","Python"]).tagged_with_on(:countries,"United States").count.should == 1
