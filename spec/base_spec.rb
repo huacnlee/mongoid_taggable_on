@@ -29,6 +29,7 @@ describe "Mongoid::TaggableOn" do
     m.actor_list = "Ruby|Rails,Python，web.py，Go"
     m.actors.should == ["Ruby", "Rails", "Python", "web.py","Go"]
   end
+
   
   it "work for Chinese" do
     m = Movie.new
@@ -68,6 +69,19 @@ describe "Mongoid::TaggableOn" do
     it "match different taggable" do
       Movie.tagged_with_on(:categories, ["Rails","Python"]).tagged_with_on(:countries,"United States").count.should == 1
       Movie.tagged_with_on(:categories, ["Rails","Python"]).tagged_with_on(:countries,"China").count.should == 2
+    end
+  end
+  
+  describe "tag_list_was, tag_list_changed?" do
+    it "should work with _was and _changed?" do
+      m = Movie.new
+      m.actor_list = "Ruby,Rails"
+      m.save
+      m.actor_list = "Python,Django"
+      m.actors_was.should == %w(Ruby Rails)
+      m.actor_list_was.should == "Ruby,Rails"
+      m.actors_changed?.should == true
+      m.actor_list_changed?.should == true
     end
   end
 end

@@ -91,6 +91,15 @@ find items with tag
             return "" if self.#{field_name}.blank?
             self.#{field_name}.join(",")
           end
+
+          def #{field_name_single}_list_was
+            return "" if self.#{field_name}_was.blank?
+            self.#{field_name}_was.join(",")
+          end
+
+          def #{field_name_single}_list_changed?
+            self.#{field_name}_changed?
+          end
         }
       end
       
