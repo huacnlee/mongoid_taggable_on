@@ -21,6 +21,9 @@ gem 'mongoid_taggable_on'
 ```
 
 ## Usage
+
+[中文介绍去这里](http://huacnlee.com/blog/new_gem_mongoid_taggable_on) 
+
 ```ruby
 class Movie
   include Mongoid::Document
