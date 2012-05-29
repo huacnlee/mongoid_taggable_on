@@ -1,4 +1,1 @@
 rvm: 1.9.2
-before_script: 
-  - mongo mongoid_taggable_on_test --eval 'db.addUser("travis", "test");'
-
