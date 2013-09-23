@@ -4,7 +4,8 @@ Mongoid Taggable provides some helpers to create taggable documents, can use man
 
 ## Status
 
-[![CI Status](https://secure.travis-ci.org/huacnlee/mongoid_taggable_on.png)](http://travis-ci.org/huacnlee/mongoid_taggable_on)
+- [![Gem Version](https://badge.fury.io/rb/mongoid_taggable_on.png)](https://rubygems.org/gems/mongoid_taggable_on)
+- [![CI Status](https://api.travis-ci.org/huacnlee/mongoid_taggable_on.png)](http://travis-ci.org/huacnlee/mongoid_taggable_on)
 
 ## Installation
 
@@ -22,7 +23,7 @@ gem 'mongoid_taggable_on'
 
 ## Usage
 
-[中文介绍去这里](http://huacnlee.com/blog/new_gem_mongoid_taggable_on) 
+[中文介绍去这里](http://huacnlee.com/blog/new_gem_mongoid_taggable_on)
 
 ```ruby
 class Movie
@@ -32,12 +33,12 @@ class Movie
   taggable_on :actors, :index => false
   taggable_on :directors
   taggable_on :countries
-  
+
   field :title
   field :summary
 end
 ```
-    
+
 Now you can use sample:
 
 ```bash
@@ -49,19 +50,19 @@ irb> m.country_list = "United States| China|Mexico"
 irb> m.countries
 ["United States","China","Mexico"]
 ```
-    
+
 find with tag:
 
 ```bash
 irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt")
 irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt", :match => :any)
-irb> Movie.tagged_with_on(:actors, "Nicolas Cage", :match => :not)    
+irb> Movie.tagged_with_on(:actors, "Nicolas Cage", :match => :not)
 ```
 
 ## Allow split chars
 
     , ，| /
-    
+
 ## Who used that?
 
 In [720p.so](http://720p.so), the Movie actors, directors, languages, countries, tags all base in mongoid\_taggable\_on.
