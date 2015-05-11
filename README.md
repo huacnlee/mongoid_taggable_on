@@ -43,7 +43,7 @@ Now you can use sample:
 
 ```bash
 irb> m = Movie.new
-irb> m.actors_list = "Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage"
+irb> m.actor_list = "Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage"
 irb> m.actors
 ["Jason Statham", "Joseph Gordon-Levitt", "Johnny De", "Nicolas Cage"]
 irb> m.country_list = "United States| China|Mexico"
