@@ -45,7 +45,6 @@ RSpec.configure do |config|
   config.mock_with :mocha
   config.after :suite do
     Mongoid.purge!
-    Mongoid::IdentityMap.clear
     if ENV["CI"]
       Mongoid::Threaded.sessions[:default].drop
     end

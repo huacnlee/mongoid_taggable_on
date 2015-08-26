@@ -73,7 +73,7 @@ find items with tag
 
         index_code = ""
         if opts[:index] != false
-          index_code = "index({#{field_name}: 1}, {background: true})"
+          index_code = "index({#{field_name}: '2d'}, {background: true})"
         end
 
         class_eval %{
