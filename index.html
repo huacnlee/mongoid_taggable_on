@@ -1,104 +1,98 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>mongoid_taggable_on by huacnlee</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>mongoid_taggable_on</h1>
-        <p>Taggable on custom fields for Mongoid</p>
+    <section class="page-header">
+      <h1 class="project-name">mongoid_taggable_on</h1>
+      <h2 class="project-tagline">Taggable on custom fields for Mongoid</h2>
+      <a href="https://github.com/huacnlee/mongoid_taggable_on" class="btn">View on GitHub</a>
+      <a href="https://github.com/huacnlee/mongoid_taggable_on/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/huacnlee/mongoid_taggable_on/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/huacnlee/mongoid_taggable_on">View the Project on GitHub <small>huacnlee/mongoid_taggable_on</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/huacnlee/mongoid_taggable_on/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/huacnlee/mongoid_taggable_on/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/huacnlee/mongoid_taggable_on">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>Mongoid Taggable On</h1>
+    <section class="main-content">
+      <h1>
+<a id="mongoid-taggable-on" class="anchor" href="#mongoid-taggable-on" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mongoid Taggable On</h1>
 
 <p>Mongoid Taggable provides some helpers to create taggable documents, can use many fields.</p>
 
-<h2>Status</h2>
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Status</h2>
 
 <p><a href="http://travis-ci.org/huacnlee/mongoid_taggable_on"><img src="https://secure.travis-ci.org/huacnlee/mongoid_taggable_on.png" alt="CI Status"></a></p>
 
-<h2>Installation</h2>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>You can simple install from rubygems:</p>
 
-<div class="highlight"><pre>gem install mongoid_taggable_on
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>gem install mongoid_taggable_on</pre></div>
 
 <p>or in Gemfile:</p>
 
-<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'mongoid_taggable_on'</span>
-</pre></div>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>mongoid_taggable_on<span class="pl-pds">'</span></span></pre></div>
 
-<h2>Usage</h2>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p><a href="http://huacnlee.com/blog/new_gem_mongoid_taggable_on">中文介绍去这里</a> </p>
 
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Movie</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
-  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">TaggableOn</span>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">Movie</span>
+  <span class="pl-k">include</span> <span class="pl-c1">Mongoid</span>::<span class="pl-c1">Document</span>
+  <span class="pl-k">include</span> <span class="pl-c1">Mongoid</span>::<span class="pl-c1">TaggableOn</span>
 
-  <span class="n">taggable_on</span> <span class="ss">:actors</span><span class="p">,</span> <span class="ss">:index</span> <span class="o">=&gt;</span> <span class="kp">false</span>
-  <span class="n">taggable_on</span> <span class="ss">:directors</span>
-  <span class="n">taggable_on</span> <span class="ss">:countries</span>
+  taggable_on <span class="pl-c1">:actors</span>, <span class="pl-c1">:index</span> =&gt; <span class="pl-c1">false</span>
+  taggable_on <span class="pl-c1">:directors</span>
+  taggable_on <span class="pl-c1">:countries</span>
 
-  <span class="n">field</span> <span class="ss">:title</span>
-  <span class="n">field</span> <span class="ss">:summary</span>
-<span class="k">end</span>
-</pre></div>
+  field <span class="pl-c1">:title</span>
+  field <span class="pl-c1">:summary</span>
+<span class="pl-k">end</span></pre></div>
 
 <p>Now you can use sample:</p>
 
-<div class="highlight"><pre>irb&gt; <span class="nv">m</span> <span class="o">=</span> Movie.new
-irb&gt; m.actors_list <span class="o">=</span> <span class="s2">"Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage"</span>
-irb&gt; m.actors
-<span class="o">[</span><span class="s2">"Jason Statham"</span>, <span class="s2">"Joseph Gordon-Levitt"</span>, <span class="s2">"Johnny De"</span>, <span class="s2">"Nicolas Cage"</span><span class="o">]</span>
-irb&gt; m.country_list <span class="o">=</span> <span class="s2">"United States| China|Mexico"</span>
-irb&gt; m.countries
-<span class="o">[</span><span class="s2">"United States"</span>,<span class="s2">"China"</span>,<span class="s2">"Mexico"</span><span class="o">]</span>
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>irb<span class="pl-k">&gt;</span> m = Movie.new
+irb<span class="pl-k">&gt;</span> m.actors_list = <span class="pl-s"><span class="pl-pds">"</span>Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage<span class="pl-pds">"</span></span>
+irb<span class="pl-k">&gt;</span> m.actors
+[<span class="pl-s"><span class="pl-pds">"</span>Jason Statham<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Joseph Gordon-Levitt<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Johnny De<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Nicolas Cage<span class="pl-pds">"</span></span>]
+irb<span class="pl-k">&gt;</span> m.country_list = <span class="pl-s"><span class="pl-pds">"</span>United States| China|Mexico<span class="pl-pds">"</span></span>
+irb<span class="pl-k">&gt;</span> m.countries
+[<span class="pl-s"><span class="pl-pds">"</span>United States<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>China<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Mexico<span class="pl-pds">"</span></span>]</pre></div>
 
 <p>find with tag:</p>
 
-<div class="highlight"><pre>irb&gt; Movie.tagged_with_on<span class="o">(</span>:actors, <span class="s2">"Jason Statham, Joseph Gordon-Levitt"</span><span class="o">)</span>
-irb&gt; Movie.tagged_with_on<span class="o">(</span>:actors, <span class="s2">"Jason Statham, Joseph Gordon-Levitt"</span>, :match <span class="o">=</span>&gt; :any<span class="o">)</span>
-irb&gt; Movie.tagged_with_on<span class="o">(</span>:actors, <span class="s2">"Nicolas Cage"</span>, :match <span class="o">=</span>&gt; :not<span class="o">)</span>    
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>irb<span class="pl-k">&gt;</span> Movie.tagged_with_on(:actors, <span class="pl-s"><span class="pl-pds">"</span>Jason Statham, Joseph Gordon-Levitt<span class="pl-pds">"</span></span>)
+irb<span class="pl-k">&gt;</span> Movie.tagged_with_on(:actors, <span class="pl-s"><span class="pl-pds">"</span>Jason Statham, Joseph Gordon-Levitt<span class="pl-pds">"</span></span>, :match =<span class="pl-k">&gt;</span> :any)
+irb<span class="pl-k">&gt;</span> Movie.tagged_with_on(:actors, <span class="pl-s"><span class="pl-pds">"</span>Nicolas Cage<span class="pl-pds">"</span></span>, :match =<span class="pl-k">&gt;</span> :not)    </pre></div>
 
-<h2>Allow split chars</h2>
+<h2>
+<a id="allow-split-chars" class="anchor" href="#allow-split-chars" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Allow split chars</h2>
 
 <pre><code>, ，| /
 </code></pre>
 
-<h2>Who used that?</h2>
+<h2>
+<a id="who-used-that" class="anchor" href="#who-used-that" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who used that?</h2>
 
 <p>In <a href="http://720p.so">720p.so</a>, the Movie actors, directors, languages, countries, tags all base in mongoid_taggable_on.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/huacnlee">huacnlee</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/huacnlee/mongoid_taggable_on">mongoid_taggable_on</a> is maintained by <a href="https://github.com/huacnlee">huacnlee</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
