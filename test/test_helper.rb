@@ -43,6 +43,5 @@ end
 class ActiveSupport::TestCase
   teardown do
     Mongoid.purge!
-    Mongoid::Threaded.sessions[:default].drop if ENV["CI"]
   end
 end
