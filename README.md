@@ -17,20 +17,19 @@ gem install mongoid_taggable_on
 
 or in Gemfile:
 
-```ruby
-gem 'mongoid_taggable_on'
+```rb
+gem "mongoid_taggable_on"
 ```
 
 ## Usage
 
-[中文介绍去这里](http://huacnlee.com/blog/new_gem_mongoid_taggable_on)
 
 ```ruby
 class Movie
   include Mongoid::Document
   include Mongoid::TaggableOn
 
-  taggable_on :actors, :index => false
+  taggable_on :actors, index: false
   taggable_on :directors
   taggable_on :countries
 
@@ -42,26 +41,29 @@ end
 Now you can use sample:
 
 ```bash
-irb> m = Movie.new
-irb> m.actor_list = "Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage"
-irb> m.actors
+irb> movie = Movie.new
+irb> movie.actor_list = "Jason Statham, Joseph Gordon-Levitt, Johnny Depp, Nicolas Cage"
+irb> movie.actors
 ["Jason Statham", "Joseph Gordon-Levitt", "Johnny De", "Nicolas Cage"]
-irb> m.country_list = "United States| China|Mexico"
-irb> m.countries
-["United States","China","Mexico"]
+
+irb> movie.country_list = "United States| China|Mexico"
+irb> movie.countries
+["United States", "China","Mexico"]
 ```
 
 find with tag:
 
 ```bash
 irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt")
-irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt", :match => :any)
-irb> Movie.tagged_with_on(:actors, "Nicolas Cage", :match => :not)
+irb> Movie.tagged_with_on(:actors, "Jason Statham, Joseph Gordon-Levitt", match: :any)
+irb> Movie.tagged_with_on(:actors, "Nicolas Cage", match: :not)
 ```
 
 ## Allow split chars
 
-    , ，| /
+```
+, ，| /
+```
 
 ## Who used that?
 
