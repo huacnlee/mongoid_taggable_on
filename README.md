@@ -4,8 +4,7 @@ Mongoid Taggable provides some helpers to create taggable documents, can use man
 
 ## Status
 
-- [![Gem Version](https://badge.fury.io/rb/mongoid_taggable_on.svg)](https://rubygems.org/gems/mongoid_taggable_on)
-- [![CI Status](https://api.travis-ci.org/huacnlee/mongoid_taggable_on.svg)](http://travis-ci.org/huacnlee/mongoid_taggable_on)
+[![CI Status](https://api.travis-ci.org/huacnlee/mongoid_taggable_on.svg)](http://travis-ci.org/huacnlee/mongoid_taggable_on) [![Gem Version](https://badge.fury.io/rb/mongoid_taggable_on.svg)](https://rubygems.org/gems/mongoid_taggable_on)
 
 ## Installation
 
