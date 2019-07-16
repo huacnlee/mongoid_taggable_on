@@ -1,1 +1,2 @@
-require File.join(File.dirname(__FILE__), 'mongoid/taggable_on')
+# frozen_string_literal: true
+require_relative "./mongoid/taggable_on"

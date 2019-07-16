@@ -1,14 +1,10 @@
-require 'rubygems'
+# frozen_string_literal: true
 
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-
-require 'active_support/all'
+require "minitest/autorun"
+require "rails/all"
 require "mongoid"
-require "mocha"
 require "mongoid_taggable_on"
 require "uri"
-
 
 # These environment variables can be set if wanting to test against a database
 # that is not on the local machine.
@@ -22,17 +18,20 @@ PORT = ENV["MONGOID_SPEC_PORT"].to_i
 def database_id
   ENV["CI"] ? "mongoid_aii_#{Process.pid}" : "mongoid_aii_test"
 end
-
+Mongoid.logger.level = Logger::INFO
+Mongo::Logger.logger.level = Logger::INFO
 # Set the database that the spec suite connects to.
 Mongoid.configure do |config|
   config.connect_to(database_id)
+  config.log_level = :info
 end
+
 
 class Movie
   include Mongoid::Document
   include Mongoid::TaggableOn
 
-  taggable_on :actors, :index => false
+  taggable_on :actors, index: false
   taggable_on :directors
   taggable_on :countries
   taggable_on :categories
@@ -41,12 +40,9 @@ class Movie
   field :summary
 end
 
-RSpec.configure do |config|
-  config.mock_with :mocha
-  config.after :suite do
+class ActiveSupport::TestCase
+  teardown do
     Mongoid.purge!
-    if ENV["CI"]
-      Mongoid::Threaded.sessions[:default].drop
-    end
+    Mongoid::Threaded.sessions[:default].drop if ENV["CI"]
   end
 end

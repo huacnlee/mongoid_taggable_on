@@ -1,7 +1,6 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
-gem "rake"
+gem "rails", "~> 5.2.0"
 gemspec
-group :test do
-  gem 'rspec','~> 2.6.0'
-  gem 'mocha','0.10.0'
-end
+
